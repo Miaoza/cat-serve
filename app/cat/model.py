@@ -2,7 +2,7 @@
 # @Author: Nianko
 # @Date:   2022-01-07 09:48:36
 # @Last Modified by:   Nianko
-# @Last Modified time: 2022-01-07 17:03:13
+# @Last Modified time: 2022-01-07 17:25:41
 
 from app import db
 
@@ -13,6 +13,7 @@ class Cat(db.model):
     "mysql_charset": "utf8" # 指定表的编码格式
   }
   id = db.Column(db.Integer, primary_key=True)
+  characteristic_id = db.Column(db.Integer, db.ForeignKey('characteristic.id')) # 特征
   name = db.Column(db.String(80)) # 姓名
   avatar = db.Column(db.Text) # 头像
   grender = db.Column(db.String(8)) # 性别 【男、女】
@@ -46,6 +47,7 @@ class Characteristic(db.model):
     "mysql_charset": "utf8"
   }
   id = db.Column(db.Integer, primary_key=True)
+  cats = db.relationship('Cat', backref='characteristic', lazy='dynamic')
   variety = db.Column(db.String(80)) # 品种
   color = db.Column(db.String(80)) # 颜色
   somatotype = db.Column(db.String(8)) # 体型 【大、中、小】
@@ -62,9 +64,9 @@ class PhotoAlbum(db.model):
     "mysql_charset": "utf8"
   }
   id = db.Column(db.Integer, primary_key=True)
-  url = db.Column(db.Text)
   cat_id = db.Column(db.Integer, db.ForeignKey('cat.id'))
-  status = db.Column(db.Integer) # 状态 【0:待使用，1: 使用中】
+  url = db.Column(db.Text)
+  status = db.Column(db.Integer) # 状态 【0:未使用，1: 使用中】
   remark = db.Column(db.String(80)) # 备注
   create_date = db.Column(db.DateTime) # 创建时间
   update_date = db.Column(db.DateTime) #更新时间
