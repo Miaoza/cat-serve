@@ -2,9 +2,9 @@
 # @Author: Nianko
 # @Date:   2022-01-07 09:48:30
 # @Last Modified by:   Nianko
-# @Last Modified time: 2022-01-07 11:36:03
+# @Last Modified time: 2022-01-10 16:11:28
 
-from cat import *
+# from cat import *
 
 # car_api.add_resource(AdminCartoons, '/admin/cartoons')
 # car_api.add_resource(AdminCartoonView, '/admin/cartoon/<int:cartoon_id>')

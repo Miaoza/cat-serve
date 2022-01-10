@@ -2,11 +2,11 @@
 # @Author: Nianko
 # @Date:   2022-01-07 09:48:36
 # @Last Modified by:   Nianko
-# @Last Modified time: 2022-01-07 17:25:41
+# @Last Modified time: 2022-01-10 15:28:01
 
 from app import db
 
-class Cat(db.model):
+class Cat(db.Model):
   __tablename__ = 'cat'
   __table_args__ = {
     "mysql_engine": "InnoDB", # 指定表的引擎,InnoDB（MySQL的数据库引擎之一）
@@ -40,7 +40,7 @@ class Cat(db.model):
     return '<Cat %r>' % self.name
 
 # 特征
-class Characteristic(db.model):
+class Characteristic(db.Model):
   __tablename__ = 'characteristic'
   __table_args__ = {
     "mysql_engine": "InnoDB",
@@ -57,7 +57,7 @@ class Characteristic(db.model):
   update_date = db.Column(db.DateTime) #更新时间
 
 # 相册
-class PhotoAlbum(db.model):
+class PhotoAlbum(db.Model):
   __tablename__ = 'photo_album'
   __table_args__ = {
     "mysql_engine": "InnoDB",
